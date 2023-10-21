@@ -1,0 +1,60 @@
+<div class="container" *ngIf="orderDetails">
+  <div class="row mt-2">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-info"> Order Details :</div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item bg-body-secondary"> Order ID : {{orderId}}</li>
+
+            <li class="list-group-item bg-body-tertiary"> Date : {{orderDetails.creatAt | date:"dd/MM/YYYY"}}</li>
+
+            <li class="list-group-item bg-body-secondary"> Order Status : {{orderDetails.orderStatus}}</li>
+
+            <li class="list-group-item bg-body-tertiary"> Customer ID : {{orderDetails.customer.id}}</li>
+
+            <li class="list-group-item bg-body-secondary"> Customer Name : {{orderDetails.customer.name}}</li>
+
+            <li class="list-group-item bg-body-tertiary"> Customer Email : {{orderDetails.customer.email}}</li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-info"> Product Items</div>
+        <div class="card-body">
+          <table class="table">
+            <thead class="bg-info " >
+            <tr class="bg-dark ">
+              <th class="bg-dark text-white">Product ID</th>  <th class="bg-dark text-white">Product Name</th>
+              <th class="bg-dark text-white"> Quantity</th> <th class="bg-dark text-white">Price</th>
+              <th class="bg-dark text-white">Discount</th><th class="bg-dark text-white">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let p of orderDetails.productItems">
+              <td class="bg-body-tertiary">{{p.productId}}</td>
+              <td class="bg-body-secondary">{{p.product.name}}</td>
+              <td class="bg-body-tertiary">{{p.quantity}}</td>
+              <td class="text-end bg-body-secondary">{{p.price |number :'1.2-2'}}</td>
+              <td class="text-end bg-body-tertiary">{{p.discount |number :'1.2-2'}} </td>
+              <td class="text-end bg-body-secondary">{{p.amount |number :'1.2-2'}} </td>
+            </tr>
+            <tr class="bg-dark text-white">
+              <td colspan="5" class="text-end bg-dark text-white">Sum Total :</td>
+              <td class="text-end bg-dark text-white"> {{orderDetails.total |number :'1.2-2'}} </td>
+
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

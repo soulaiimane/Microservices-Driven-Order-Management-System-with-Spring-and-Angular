@@ -1,0 +1,18 @@
+<div class="container mt-3">
+  <table class="table" *ngIf="products">
+    <thead>
+    <tr class="">
+      <th class="bg-dark text-white">ID</th> <th class="bg-dark text-white">Name</th>
+      <th class="bg-dark text-white">Price</th> <th class="bg-dark text-white">Quantity</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of products._embedded.products ">
+      <td class="bg-body-tertiary" >{{p.id}}</td>
+      <td class="bg-body-secondary">{{p.name}}</td>
+      <td class="bg-body-tertiary" >{{p.price}}</td>
+      <td class="bg-body-secondary">{{p.quantity}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
